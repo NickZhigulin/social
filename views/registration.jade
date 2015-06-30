@@ -1,0 +1,38 @@
+doctype html
+html
+   head(lang='en')
+      meta(charset='UTF-8')
+      title
+      link(rel='stylesheet', href='css/register.css')
+      link(rel='stylesheet', href='css/bootstrap.css')
+      link(rel='stylesheet', href='css/bootstrap-theme.css')
+      script(src='js/bootstrap.js')
+      script(src='js/bootstrap.min.js')
+      script(src='js/jquery-2.1.3.min.js')
+   body.container-fluid
+      .row
+         .col-md-12.head
+            .headtext
+               |Welcome to Wonderland!
+      .reg-form.col-md-6.col-md-offset-3
+         form.form-horizontal(action='/registration', method='post')
+            .form-group
+               label.col-sm-2.control-label(for='inputEmail3') Nickname
+               .col-sm-10
+                  input#inputEmail3.form-control(name='nickname', type='text', placeholder='Nickname')
+            .form-group
+               label.col-sm-2.control-label(for='inputEmail3') Email
+               .col-sm-10
+                  input#inputEmail3.form-control(name='email', type='email', placeholder='Email')
+            .form-group
+               label.col-sm-2.control-label(for='inputPassword3') Password
+               .col-sm-10
+                  input#inputPassword3.form-control(name='password', type='password', placeholder='Password')
+            .form-group
+               label.col-sm-2.control-label(for='inputPassword3') Confirm password
+               .col-sm-10
+                  input#inputPassword3.form-control(name='passwordRepeat', type='password', placeholder='Confirm password')
+            .form-group
+               .col-sm-offset-2.col-sm-10
+                  button.btn.btn-default(type='submit')
+                     | Registration
