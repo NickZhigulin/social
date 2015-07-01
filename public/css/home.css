@@ -25,14 +25,20 @@
 }
 .frame {
     position: relative;
-    height: 400px;
+    /*height: 400px;*/
     z-index: 5;
 }
 .avatar {
     position: relative;
-    left: 50px;
-    bottom: 302px;
-    height: 270px;
-    width: 194px;
+    left: 40px;
+    bottom: 280px;
+
     z-index: 3;
 }
+/*.menuAll {*/
+    /*height: 400px;*/
+    /*width: 100px;*/
+/*}*/
+/*.menu {*/
+    /*width: 200px;*/
+/*}*/
