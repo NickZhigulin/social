@@ -6,6 +6,7 @@ models = require('./db').models
 
 strategy = new LocalStrategy((email, password, done) ->
     models.User.findOne { email: email },  (err, user) ->
+        console.log("Прошла проверка")
         if err
             return done(err)
         if !user
@@ -31,6 +32,7 @@ exports.init = (app) ->
     app.use(passport.session())
 
 exports.authenticate = passport.authenticate('local')
+
 exports.auth = (req, res, next) ->
     if req.user
         next()

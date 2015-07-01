@@ -6,13 +6,14 @@
 }
 .container-fluid {
     background-color: rgba(72, 43, 7, 0.4);
-    background-image: url("../img/background_index.jpg");
-    background-size: 100%;
+    background-image: url("../img/background_home.jpg");
+    background-size: auto;
     font-family: Sunday;
 }
 .head {
     border-radius: 0px 0px 15px 15px;
     height: 70px;
+    /*background-color: #000000;*/
     background-image: url("../img/grab_wood.png");
     background-size: contain;
 }
@@ -22,21 +23,16 @@
     color:#F4DD85;
     font-size: 39pt;
 }
-.email{
- margin-bottom: 10px;
+.frame {
+    position: relative;
+    height: 400px;
+    z-index: 5;
 }
-.password {
-    margin-bottom: 10px;
-}
-.checkbox {
-    padding-left: 20px;
-}
-.reg {
-    margin-left: auto;
-    margin-right: auto;
-    float: right;
-}
-.text {
-    text-align: center;
-    color: #2413ff;
+.avatar {
+    position: relative;
+    left: 50px;
+    bottom: 302px;
+    height: 270px;
+    width: 194px;
+    z-index: 3;
 }

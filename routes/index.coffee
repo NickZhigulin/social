@@ -4,8 +4,12 @@ models = require('../lib/db').models
 auth = require('../lib/auth')
 router = express.Router()
 
-router.get '/', (req, res, next) ->
+router.get '/',(req, res, next) ->
   res.render 'index'
+
+router.post '/', auth.authenticate,(req, res) ->
+  res.redirect '/home',
+
 
 router.get '/registration', (req, res, next)->
   res.render 'registration'
@@ -18,8 +22,7 @@ router.post '/registration',  (req, res) ->
   models.User.create user, (err, doc) ->
     res.render 'index'
 
-router.post '/', auth.authenticate, (req, res) ->
-  res.redirect 'main'
+
 
 
 
