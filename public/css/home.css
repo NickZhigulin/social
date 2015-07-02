@@ -1,14 +1,29 @@
 @font-face {
+    font-family: Knop;
+    src: url(../fonts/cpr455aU.ttf);
+}
+@font-face {
+    font-family: Uper;
+    src: url(../fonts/BttBtg5D.ttf);
+}
+@font-face {
     font-family: Sunday;
     src: url(../fonts/kDjPoAdt.ttf);
-    font-family: Uper;
-    src: url(../fonts/BttBtg5D.ttf)
 }
+
 .container-fluid {
     background-color: rgba(72, 43, 7, 0.4);
     background-image: url("../img/background_home.jpg");
-    background-size: auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: Sunday;
+    min-width: 1290px;
+    max-width: 1310px;
+}
+.body {display: inline;
+    min-width: 1290px;
+    max-width: 1310px;
 }
 .head {
     border-radius: 0px 0px 15px 15px;
@@ -23,22 +38,101 @@
     color:#F4DD85;
     font-size: 39pt;
 }
+ /*Аватар*/
+.avatarAll {
+    display: inline-block;
+    float: right;
+    height: 400px;
+    width: 350px;
+}
 .frame {
     position: relative;
-    /*height: 400px;*/
+    height: 400px;
+    width: 350px;
     z-index: 5;
 }
 .avatar {
     position: relative;
-    left: 40px;
-    bottom: 280px;
-
+    left: 64px;
+    bottom: 301px;
     z-index: 3;
+    overflow: hidden;
+    height: 265px;
+    width: 235px;
 }
-/*.menuAll {*/
-    /*height: 400px;*/
-    /*width: 100px;*/
-/*}*/
-/*.menu {*/
-    /*width: 200px;*/
-/*}*/
+/*Убираем подчеркивание ссылок*/
+body > div:nth-child(2) > div.menuAll > a:hover {
+    text-decoration: none;
+}
+/*Menu*/
+.menuAll {
+    display: inline-block;
+    height: 400px;
+    width: 270px;
+    margin-left: 30px;
+    float: left;
+}
+.menu {
+    width: 265px;
+    height: 59px;
+    text-align: center;
+    line-height: 60px;
+}
+.top {
+    height: 104px;
+    background-image: url("../img/top_menu.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.button {
+    font-family: Knop;
+    font-size: 30pt;
+    color: #ffc520;
+    background-image: url("../img/button_menu.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.bottom {
+    background-image: url("../img/bottom_menu.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/*Center*/
+.center {
+    display: inline-block;
+    height: 100%;
+    width: 600px;
+    margin-left: 30px;
+}
+.center.topp {
+    background-image: url("../img/center_top.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    float: left;
+    height: 100%;
+    width: 100%;
+    margin-left: 0px;
+
+
+}
+.center.lenta {
+    float: left;
+    background-color: #ec971f;
+    height: 100%;
+    width: 100%;
+    margin-left: 0px;
+
+
+}
+.center.bot {
+    background-image: url("../img/center_bottom.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    float: left;
+    width: 100%;
+    height: 100px;
+    margin-left: 0px;
+
+}
+

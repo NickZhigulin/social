@@ -1,6 +1,8 @@
 @font-face {
     font-family: Sunday;
     src: url(../fonts/kDjPoAdt.ttf);
+}
+@font-face {
     font-family: Uper;
     src: url(../fonts/BttBtg5D.ttf)
 }
@@ -38,5 +40,5 @@
 }
 .text {
     text-align: center;
-    color: #2413ff;
+    color: #ffa113;
 }

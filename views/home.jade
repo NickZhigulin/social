@@ -17,14 +17,27 @@ html(ng-app="home")
                 .headtext
                     |Welcome to Wonderland!
         .row
-            .col-md-3.pull-right
-                img.frame.col-md-12(src="/img/frame_avatar.png")
-                img.avatar.col-md-9(ng-src="{{user.avatar}}")
-            .menuAll.col-md-3.pull-left
-                img.menu.col-md-12(src="/img/top_menu.png")
-                img.menu.col-md-12(src="/img/button_menu.jpg")
-                img.menu.col-md-12(src="/img/button_menu.jpg")
-                img.menu.col-md-12(src="/img/button_menu.jpg")
-                img.menu.col-md-12(src="/img/button_menu.jpg")
-                img.menu.col-md-12(src="/img/bottom_menu.jpg")
+            .menuAll
+                .menu.top
+                a(href="friends")
+                    .menu.button
+                        |Friends
+                a(href="chat")
+                    .menu.button
+                        |Chatrooms
+                 a(href="alboms")
+                    .menu.button
+                        |Alboms
+                 a(href="news")
+                    .menu.button
+                        |News
+                .menu.bottom
+            .center
+                .center.topp
+                ol.lenta
+                .center.bot
+            .avatarAll
+                img.frame(src="/img/frame_avatar.png")
+                .avatar
+                    img(ng-src="{{user.avatar}}")
 
