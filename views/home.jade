@@ -15,7 +15,7 @@ html(ng-app="home")
         .row
             .col-md-12.head
                 .headtext
-                    |Welcome to Wonderland!
+                    |Welcome to Wonderland, {{user.nickname}}!
         .row
             .menuAll
                 .menu.top
@@ -34,10 +34,17 @@ html(ng-app="home")
                 .menu.bottom
             .center
                 .center.topp
-                ol.lenta
+                    button.added(ng-click="add='vis'")
+                     |Add News
+                .lenta
                 .center.bot
             .avatarAll
                 img.frame(src="/img/frame_avatar.png")
                 .avatar
                     img(ng-src="{{user.avatar}}")
-
+            .addNews.hidd(ng-class="add")
+                    textarea(type="text", class="form-control", rows="5", placeholder="Input your text...", ng-model='mess')
+                    button.btn.btn-default(ng-click="sendNews()")
+                        | Submit
+                    button.btn.btn-default(ng-click="add='hidd'")
+                        |Cancel

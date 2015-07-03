@@ -10,11 +10,19 @@
 form {
     font-family: Sunday;
 }
+.container-fluid {
+    background-color: rgba(72, 43, 7, 0.4);
+    background-image: url("../img/background_index.jpg");
+    background-size: 100%;
+    font-family: Sunday;
+    color: #ec971f;
+}
 .head {
     border-radius: 0px 0px 15px 15px;
     height: 70px;
     margin-bottom: 15px;
-    background-color: #000000;
+    background-image: url("../img/grab_wood.png");
+    background-size: contain;
 }
 .headtext {
     font-family: Uper;

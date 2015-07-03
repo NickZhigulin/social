@@ -133,6 +133,46 @@ body > div:nth-child(2) > div.menuAll > a:hover {
     width: 100%;
     height: 100px;
     margin-left: 0px;
-
+}
+.added {
+    background-image: url("../img/add_new.jpg");
+    background-size: contain;
+    border: 0px;
+    color: #ec971f;
+    float: right;
+    position: relative;
+    top: 70px;
+    right: 10px;
+}
+.hidd {
+    visibility: hidden;
+}
+.vis {
+    visibility: visible;
+}
+.addNews {
+    position: fixed;
+    height: 250px;
+    width: 600px;
+    border-radius: 15px;
+    top: 10%;
+    left: 27%;
+    background: #752201; /* Old browsers */
+    background: -moz-linear-gradient(top,  #752201 0%, #f0b7a1 9%, #f0b7a1 9%, #bf6e4e 89%, #8c3310 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#752201), color-stop(9%,#f0b7a1), color-stop(9%,#f0b7a1), color-stop(89%,#bf6e4e), color-stop(100%,#8c3310)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #752201 0%,#f0b7a1 9%,#f0b7a1 9%,#bf6e4e 89%,#8c3310 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #752201 0%,#f0b7a1 9%,#f0b7a1 9%,#bf6e4e 89%,#8c3310 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #752201 0%,#f0b7a1 9%,#f0b7a1 9%,#bf6e4e 89%,#8c3310 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #752201 0%,#f0b7a1 9%,#f0b7a1 9%,#bf6e4e 89%,#8c3310 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#752201', endColorstr='#8c3310',GradientType=0 ); /* IE6-9 */
+}
+.addNews > textarea {
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 90%;
+}
+.addNews > button {
+    margin-left: 150px;
 }
 
