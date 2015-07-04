@@ -6,6 +6,7 @@ exports.boot = (server) ->
   io.on 'connection', (socket) ->
     console.log('connection')
     socket.on 'subscribe', (data) ->
+      console.log("data", data)
       socket.join(data._id);
 
 

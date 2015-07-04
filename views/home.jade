@@ -37,6 +37,14 @@ html(ng-app="home")
                     button.added(ng-click="add='vis'")
                      |Add News
                 .lenta
+                    .block(ng-repeat="text in news")
+                        .nick
+                            |{{user.nickname}}:
+                        br
+                        .news
+                            |{{news[$index].text}}
+
+                        img.separator(src="/img/block_bot.png")
                 .center.bot
             .avatarAll
                 img.frame(src="/img/frame_avatar.png")
