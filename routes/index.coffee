@@ -10,6 +10,8 @@ router.get '/',(req, res, next) ->
 router.post '/', auth.authenticate,(req, res) ->
   res.redirect '/home',
 
+router.get '/news',auth.auth, (req.res) ->
+  res.render 'news'
 
 router.get '/registration', (req, res, next)->
   res.render 'registration'
