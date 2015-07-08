@@ -38,6 +38,47 @@
     color:#F4DD85;
     font-size: 39pt;
 }
+.search {
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    float: right;
+    display: inline-block;
+    font-size: 20pt;
+    line-height: 0px;
+    color: black;
+    margin-top: 20px;
+    margin-right: 40px;
+}
+/*Окно поиска*/
+.searchWindow {
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    height: auto;
+    width: 605px;
+    padding: 50px;
+    background-color: rgb(234, 197, 132);
+    border-radius: 15px;
+    border: 6px solid black;
+    border-style: groove;
+}
+.topText {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 25pt;
+}
+.searchWindow > .input {
+    width: 100%;
+    margin-bottom: 40px;
+}
+.searchWindow > button {
+    margin-left: 120px;
+}
+.findAvatar {
+    width: 60px;
+    height: 70px;
+}
  /*Аватар*/
 .avatarAll {
     display: inline-block;
@@ -61,9 +102,12 @@
     width: 235px;
 }
 /*Убираем подчеркивание ссылок*/
-body > div:nth-child(2) > div.menuAll > a:hover {
+div.menuAll > a:hover {
+    text-decoration: none;
+}div.menuAll > a:link {
     text-decoration: none;
 }
+
 /*Menu*/
 .menuAll {
     display: inline-block;
@@ -196,4 +240,5 @@ body > div:nth-child(2) > div.menuAll > a:hover {
     margin-bottom: 10px;
     margin-left: 25px ;
 }
+
 

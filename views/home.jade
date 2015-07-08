@@ -14,22 +14,27 @@ html(ng-app="home")
         script(src='/js/home.js')
     body.container-fluid(ng-controller="page")
         .row
-            .col-md-12.head
+            .head
                 .headtext
                     |Welcome to Wonderland, {{user.nickname}}!
+                    button.search(ng-click="Sch = 'vis'")
+                        |Search
         .row
             .menuAll
                 .menu.top
-                a(href="friends")
+                a(href="home")
+                    .menu.button
+                        | Home page
+                a(href="", ng-click="friends()")
                     .menu.button
                         |Friends
-                a(href="chat")
+                a(href="", ng-click="chatrooms()")
                     .menu.button
                         |Chatrooms
-                 a(href="alboms")
+                 a(href="", ng-click="alboms()")
                     .menu.button
                         |Alboms
-                 a(href="news")
+                 a(href="", ng-click="news()")
                     .menu.button
                         |News
                 .menu.bottom
@@ -52,8 +57,19 @@ html(ng-app="home")
                 .avatar
                     img(ng-src="{{user.avatar}}")
             .addNews.hidd(ng-class="add")
-                    textarea(type="text", class="form-control", rows="5", placeholder="Input your text...", ng-model='mess')
-                    button.btn.btn-default(ng-click="sendNews()")
-                        | Submit
-                    button.btn.btn-default(ng-click="add='hidd'")
-                        |Cancel
+                textarea(type="text", class="form-control", rows="5", placeholder="Input your text...", ng-model='mess')
+                button.btn.btn-default(ng-click="sendNews()")
+                    | Submit
+                button.btn.btn-default(ng-click="add='hidd'")
+                    |Cancel
+            .searchWindow.hidd(ng-class="Sch")
+                .topText
+                    |Input name for search
+                input.input(type="text" ng-model="search")
+                .result(ng-repeat="name in find")
+                    img.findAvatar(ng-src="{{find[$index].avatar}}")
+                    |{{find[$index].name}}
+                button.btn.btn-default(ng-click="_search()")
+                    | Submit
+                button.btn.btn-default(ng-click="Sch='hidd'")
+                    | Cancel

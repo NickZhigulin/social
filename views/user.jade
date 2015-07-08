@@ -16,21 +16,25 @@ html(ng-app="home")
             .col-md-12.head
                 .headtext
                     |Welcome to Wonderland, {{user.nickname}}!
+                .search
         .row
             .menuAll
                 .menu.top
-                a(href="friends")
+                a(href="", ng-click="home()")
                     .menu.button
-                        |Friends
-                a(href="chat")
+                        | Home page
+                a(href="", ng-click="friends()")
                     .menu.button
-                        |Chatrooms
-                 a(href="alboms")
+                        | Friends
+                a(href="", ng-click="chatrooms()")
                     .menu.button
-                        |Alboms
-                 a(href="news")
+                        | Chatrooms
+                a(href="", ng-click="alboms()")
                     .menu.button
-                        |News
+                        | Alboms
+                a(href="", ng-click="news()")
+                    .menu.button
+                        | News
                 .menu.bottom
             .center
                 .center.topp
