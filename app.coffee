@@ -13,6 +13,7 @@ http = require('http')
 
 index = require('./routes/index')
 home = require('./routes/home')
+user = require('./routes/user')
 
 mongoose.connect('mongodb://127.0.0.1/test')
 
@@ -39,6 +40,7 @@ app.use session(
 auth.init app
 app.use '/', index
 app.use '/home', home
+app.use '/user',  user
 # catch 404 and forward to error handler
 app.use (req, res, next) ->
   console.log "error: ", err

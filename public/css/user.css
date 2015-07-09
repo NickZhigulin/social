@@ -80,7 +80,7 @@
     height: 70px;
     margin-right: 10px;
 }
- /*Аватар*/
+/*Аватар*/
 .avatarAll {
     display: inline-block;
     float: right;
@@ -102,12 +102,34 @@
     height: 265px;
     width: 235px;
 }
+.avatarMenu {
+    display: inline-block;
+    height: 400px;
+    width: 270px;
+    position: relative;
+    bottom: 274px;
+    left: 25px;
+    margin-left: 30px;
+    float: left;
+}
+.avatarMenu > .top.menu {
+    height: 104px;
+    background-image: url("../img/top_menu.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 /*Убираем подчеркивание ссылок*/
 div.menuAll > a:hover {
     text-decoration: none;
-}div.menuAll > a:link {
-    text-decoration: none;
 }
+div.menuAll > a:link {
+     text-decoration: none;
+}
+div.avatarMenu > a:hover {
+    text-decoration: none;
+}div.avatarMenu > a:link {
+     text-decoration: none;
+ }
 
 /*Menu*/
 .menuAll {

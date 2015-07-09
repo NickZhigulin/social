@@ -66,10 +66,10 @@ html(ng-app="home")
                 .topText
                     |Input name for search
                 input.input(type="text" ng-model="search")
-                .result(ng-repeat="name in find")
+                .result(ng-repeat="name in find" ng-click="friend(find[$index].name)")
                     img.findAvatar(ng-src="{{find[$index].avatar}}")
                     |{{find[$index].name}}
                 button.btn.btn-default(ng-click="_search()")
-                    | Submit
+                    | OK
                 button.btn.btn-default(ng-click="Sch='hidd'")
                     | Cancel

@@ -13,9 +13,7 @@ router.get '/user', auth.auth, (req, res, next) ->
 
 
 router.get '/search',auth.auth, (req,res, next) ->
-  console.log(req.query.name)
   models.User.find {"nickname" :req.query.name}, (err,doc) ->
-    console.log("doc",doc,"err",err)
     ssend = [{
         name:doc[0].nickname
         avatar:doc[0].avatar
