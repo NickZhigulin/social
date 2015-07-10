@@ -35,6 +35,7 @@
 .headtext {
     font-family: Uper;
     text-align: center;
+    margin-left:120px;
     color:#F4DD85;
     font-size: 39pt;
 }
@@ -117,6 +118,12 @@
     background-image: url("../img/top_menu.png");
     background-size: contain;
     background-repeat: no-repeat;
+}
+.avatarMenu * .button > .text {
+    width: 205px;
+    height: 59px;
+    margin: 0 auto;
+    font-size: 20pt;
 }
 /*Убираем подчеркивание ссылок*/
 div.menuAll > a:hover {

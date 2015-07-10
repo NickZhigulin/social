@@ -44,14 +44,7 @@ home.controller('page', function($scope, $http) {
       console.log(data)
     })
   };
-  $scope.friend = function(data) {
-    nick= {
-      name:data
-    }
-    $http.get('/user', {params:nick}).success(function(data){
 
-    })
-  }
 //arr = _.sortBy(arr,function(el){
 //  return el.id
 });

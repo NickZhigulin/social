@@ -5,7 +5,7 @@ schema = new mongoose.Schema
     password: String
     nickname: String
     avatar: String
-    friends: []
+    friends: [" "]
     history:[]
     news:[]
     chatrooms: []

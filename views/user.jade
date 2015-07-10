@@ -1,4 +1,4 @@
-html(ng-app="home")
+html(ng-app="user")
     head(lang='en')
         meta(charset='UTF-8')
         title
@@ -10,12 +10,12 @@ html(ng-app="home")
         script(src='/js/angular.min.js')
         script(src='/js/angular-route.js')
         script(src="/socket.io/socket.io.js")
-        script(src='/js/home.js')
+        script(src='/js/user.js')
     body.container-fluid(ng-controller="page")
         .row
             .col-md-12.head
                 .headtext
-                    |Welcome to Wonderland, {{user.nickname}}!
+                    |Welcome to the {{user.nickname}}'s Wonderland!
                     button.search(ng-click="Sch = 'vis'")
                         |Search
         .row
@@ -43,7 +43,6 @@ html(ng-app="home")
                      |Add News
                 .lenta
                     .block(ng-repeat="text in news")
-                        .close.glyphicon.glyphicon-remove(ng-click="close(news[$index].id)")
                         .nick
                             |{{user.nickname}}:
                         br
@@ -57,12 +56,14 @@ html(ng-app="home")
                     img(ng-src="{{user.avatar}}")
                 .avatarMenu
                     .menu.top
-                    a(href="", ng-click="friend()")
+                    a(href="", ng-click="_friend()")
                         .menu.button
-                            | Add friend
+                            .text
+                                |{{friend}}
                     a(href="", ng-click="sendmess()")
                         .menu.button
-                            | Send message
+                            .text
+                                |Send message
                     .menu.bottom
             .addNews.hidd(ng-class="add")
                 textarea(type="text", class="form-control", rows="5", placeholder="Input your text...", ng-model='mess')
