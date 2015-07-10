@@ -8,7 +8,7 @@ home.controller('page', function($scope, $http) {
   $http.get('/home/user').success(function(user) {
     $scope.user = user;
     $scope.history = user.history;
-    $scope.news = user.news;
+    //$scope.news = user.news;
     socket.emit('subscribe', {_id: $scope.user._id});
     socket.emit('subscribe', {_id: $scope.user.nickname});
   });

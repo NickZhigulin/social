@@ -43,7 +43,7 @@ html(ng-app="home")
                     button.added(ng-click="add='vis'")
                      |Add News
                 .lenta
-                    .block(ng-repeat="text in news")
+                    .block(ng-repeat="text in history")
                         .close.glyphicon.glyphicon-remove(ng-click="close(history[$index].id)")
                         .nick
                             |{{user.nickname}}:
