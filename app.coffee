@@ -14,6 +14,7 @@ http = require('http')
 index = require('./routes/index')
 home = require('./routes/home')
 user = require('./routes/user')
+chat = require('./routes/chat')
 
 mongoose.connect('mongodb://127.0.0.1/test')
 
@@ -41,6 +42,7 @@ auth.init app
 app.use '/', index
 app.use '/home', home
 app.use '/user',  user
+app.use '/chat', chat
 # catch 404 and forward to error handler
 app.use (req, res, next) ->
   console.log "error: ", err

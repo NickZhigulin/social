@@ -23,4 +23,9 @@ user.controller('page', function($scope, $http, $location) {
             })
         }
     }
+    $scope.sendmess = function(data) {
+        $http.get(location.pathname + '/chat').success(function (data){
+            location.assign('/chat')
+        })
+    }
 })

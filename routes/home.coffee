@@ -9,7 +9,14 @@ router.get '/', auth.auth, (req,res, next) ->
 
 router.get '/user', auth.auth, (req, res, next) ->
   models.User.findOne {nickname:req.user.nickname}, (err, doc) ->
-    res.send(doc)
+    data={
+      user:
+        nickname:doc.nickname
+        avatar: doc.avatar
+      history:doc.history
+      chatroom:doc.chatrooms
+    }
+    res.send(data)
 
 
 router.get '/search',auth.auth, (req,res, next) ->

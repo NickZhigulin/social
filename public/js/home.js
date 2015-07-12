@@ -6,13 +6,13 @@ socket = io.connect(location.origin);
 
 home.controller('page', function($scope, $http) {
   $http.get('/home/user').success(function(user) {
-    $scope.user = user;
+    $scope.user = user.user;
     $scope.history = user.history;
+    $scope.chatroom = user.chatrooms
     //$scope.news = user.news;
     socket.emit('subscribe', {_id: $scope.user._id});
     socket.emit('subscribe', {_id: $scope.user.nickname});
   });
-
   $scope.sendNews = function() {
     var send = {mess:$scope.mess};
     $http.get('home/history',{params:send}).success(function(data){
@@ -39,6 +39,7 @@ home.controller('page', function($scope, $http) {
       name:$scope.search
     };
     $http.get('home/search',{params:search}).success(function(data){
+      console.log($scope.find)
       $scope.search="";
       $scope.find = data
       console.log(data)
