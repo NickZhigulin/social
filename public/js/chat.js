@@ -51,6 +51,17 @@ chat.controller('page', function($scope, $http) {
             })
         }
     }
+    $scope._search = function(data) {
+        search = {
+            name:$scope.search
+        };
+        $http.get('home/search',{params:search}).success(function(data){
+            console.log($scope.find)
+            $scope.search="";
+            $scope.find = data
+            console.log(data)
+        })
+    };
     socket.on('chat', function (data) {
         console.log("send",data)
         $scope.activechatroom.history = data

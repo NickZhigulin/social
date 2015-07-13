@@ -22,7 +22,7 @@ Model = mongoose.model('User', schema);
 
 Model.register = (data, cb) ->
 
-Model.defaultAvatar = "/img/users_avatar/defaultAvatar.jpg"
+Model.defaultAvatar = "/img/upload/defaultAvatar.jpg"
 
 Model.prototype.validPassword = (password, cb) ->
     return this.password == password

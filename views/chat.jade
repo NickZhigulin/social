@@ -52,7 +52,7 @@ html(ng-app="chat")
                                 .text
                                     |{{activechatroom.history[$index].text}}
                         .chatInput
-                            input.mess(ng-model="chatMessage")
+                            input.mess(ng-model="chatMessage" ng-keypress="$event.keyCode == 13 && send()")
                             button.s(ng-click="send()")
                                 |Send
                 .center.bot

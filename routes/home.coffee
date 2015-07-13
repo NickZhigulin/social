@@ -2,6 +2,7 @@ express = require('express')
 multer = require('multer')
 models = require('../lib/db').models
 auth = require('../lib/auth')
+socket = require('../lib/socket')
 router = express.Router()
 
 router.get '/', auth.auth, (req,res, next) ->
@@ -50,7 +51,29 @@ router.get '/close', auth.auth, (req,res,next) ->
     doc.save (err) ->
       res.send(doc.history)
 
+router.get '/', (req, res, next) ->
+  res.sendfile "home"
 
+router.use multer(
+  dest: './public/img/upload/'
+  rename: (fieldname, filename,req) ->
+    req.user.nickname
+  onFileUploadStart: (file) ->
+    console.log file.originalname + ' is starting ...'
+    return
+  onFileUploadComplete: (file) ->
+    console.log file.fieldname + ' uploaded to  ' + file.path
+    done = true
+    return
+)
+router.post '/avatar', (req,res) ->
+  models.User.findOne {nickname:req.user.nickname}, (err, doc) ->
+    console.log("req.files",req.files.userPhoto.name)
+    doc.avatar = "/img/upload/"+req.files.userPhoto.name
+    doc.markModified('avatar')
+    doc.save (err) ->
+      socket.getIo().to(req.user.nickname).emit 'avatar', doc.avatar
+      res.redirect '/home'
 
 
 module.exports = router

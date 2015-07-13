@@ -1,11 +1,9 @@
 express = require('express')
-multer = require('multer')
 models = require('../lib/db').models
 auth = require('../lib/auth')
 router = express.Router()
 
 router.get '/:nickname', auth.auth, (req,res) ->
-  console.log("vxcvxzcvzxcvz", req.params.nickname)
   res.render 'user'
 
 router.get '/:nickname/data', auth.auth, (req,res) ->
@@ -63,11 +61,8 @@ router.get '/:nickname/chat', auth.auth, (req,res) ->
     if !model.length
       models.Chat.create chat, (err, doc) ->
   models.User.findOne {nickname: req.user.nickname}, (err,user) ->
-    console.log("doc3",req.params.nickname)
-
     user.chatrooms.push chat if !user.chatrooms.length
     user.chatrooms.filter (el) ->
-      console.log("el",el)
       if el.name == req.params.nickname
         return true
       else

@@ -14,7 +14,7 @@
 .container-fluid {
     background-color: rgba(72, 43, 7, 0.4);
     background-image: url("../img/background_home.jpg");
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: Sunday;
@@ -103,6 +103,37 @@
     height: 265px;
     width: 235px;
 }
+.avatar > img {
+    height: 100%;
+    width: 100%;
+}
+.addAvatar {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: inline-block;
+    float: right;
+    bottom: 566px;
+    right: 52px;
+    z-index: 10;
+    width: 235px;
+    height: 265px;
+    text-align: center;
+    border: 5px solid black;
+    color:white;
+}
+.addAvatar > .post {
+    margin-top: 140px;
+}
+.addAvatar > .post > .file {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.addAvatar > .post > .but {
+    color:black;
+    margin-left: 15px;
+}
+
+
 /*Убираем подчеркивание ссылок*/
 div.menuAll > a:hover {
     text-decoration: none;

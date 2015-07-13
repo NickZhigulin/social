@@ -53,9 +53,21 @@ html(ng-app="home")
                         img.separator(src="/img/block_bot.png")
                 .center.bot
             .avatarAll
-                img.frame(src="/img/frame_avatar.png")
+                img.frame(src="/img/frame_avatar.png" ng-click="clickavatar='vis'")
                 .avatar
                     img(ng-src="{{user.avatar}}")
+                .addAvatar.hidd(ng-class="clickavatar")
+                    .text
+                        |Upload a new photo
+                        br
+                        |Size of your foto
+                        br
+                        |should be 240x270 px
+                    form.post(enctype='multipart/form-data', action='/home/avatar', method='post')
+                        input.file(type='file', name='userPhoto')
+                        input.but(type='submit', value='Upload Image', name='submit')
+                        button.but(type="button" ng-click="cancel()")
+                            |Cancel
             .addNews.hidd(ng-class="add")
                 textarea(type="text", class="form-control", rows="5", placeholder="Input your text...", ng-model='mess')
                 button.btn.btn-default(ng-click="sendNews()")
