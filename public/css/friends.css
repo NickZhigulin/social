@@ -1,0 +1,254 @@
+@font-face {
+    font-family: Knop;
+    src: url(../fonts/cpr455aU.ttf);
+}
+@font-face {
+    font-family: Uper;
+    src: url(../fonts/BttBtg5D.ttf);
+}
+@font-face {
+    font-family: Sunday;
+    src: url(../fonts/kDjPoAdt.ttf);
+}
+
+.container-fluid {
+    background-color: rgba(72, 43, 7, 0.4);
+    background-image: url("../img/background_home.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Sunday;
+    min-width: 1290px;
+    max-width: 1310px;
+}
+.body {display: inline;
+    min-width: 1290px;
+    max-width: 1310px;
+}
+.head {
+    border-radius: 0px 0px 15px 15px;
+    height: 70px;
+    /*background-color: #000000;*/
+    background-image: url("../img/grab_wood.png");
+    background-size: contain;
+}
+.headtext {
+    font-family: Uper;
+    text-align: center;
+    margin-left: 120px;
+    color:#F4DD85;
+    font-size: 39pt;
+}
+.search {
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    float: right;
+    display: inline-block;
+    font-size: 20pt;
+    line-height: 0px;
+    color: black;
+    margin-top: 20px;
+    margin-right: 40px;
+}
+/*Окно поиска*/
+.searchWindow {
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    height: auto;
+    width: 605px;
+    padding: 50px;
+    background-color: rgb(234, 197, 132);
+    border-radius: 15px;
+    border: 6px solid black;
+    border-style: groove;
+}
+.topText {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 25pt;
+}
+.searchWindow > .input {
+    width: 100%;
+    margin-bottom: 40px;
+}
+.searchWindow > button {
+    margin-left: 120px;
+}
+.findAvatar {
+    width: 60px;
+    height: 70px;
+    margin-right: 10px;
+}
+ /*Аватар*/
+.avatarAll {
+    display: inline-block;
+    float: right;
+    height: 400px;
+    width: 350px;
+}
+.frame {
+    position: relative;
+    height: 400px;
+    width: 350px;
+    z-index: 5;
+}
+.avatar {
+    position: relative;
+    left: 64px;
+    bottom: 301px;
+    z-index: 3;
+    overflow: hidden;
+    height: 265px;
+    width: 235px;
+}
+.avatar > img {
+    height: 100%;
+    width: 100%;
+}
+/*Убираем подчеркивание ссылок*/
+div.menuAll > a:hover {
+    text-decoration: none;
+}div.menuAll > a:link {
+    text-decoration: none;
+}
+
+/*Menu*/
+.menuAll {
+    display: inline-block;
+    height: 400px;
+    width: 270px;
+    margin-left: 30px;
+    float: left;
+}
+.menu {
+    width: 265px;
+    height: 59px;
+    text-align: center;
+    line-height: 60px;
+}
+.top {
+    height: 104px;
+    background-image: url("../img/top_menu.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.button {
+    font-family: Knop;
+    font-size: 30pt;
+    color: #ffc520;
+    background-image: url("../img/button_menu.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.bottom {
+    background-image: url("../img/bottom_menu.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/*Center*/
+.center {
+    display: inline-block;
+    height: 100%;
+    width: 600px;
+    margin-left: 30px;
+}
+.center.topp {
+    background-image: url("../img/center_top.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    float: left;
+    height: 138px;
+    width: 100%;
+    margin-left: 0px;
+
+
+}
+.friends {
+    display: inline-block;
+    height: auto;
+    width: 100%;
+}
+
+.friend > .friendAvatar  {
+    position: relative;
+    bottom: 20px;
+    height: 220px;
+    width: 170px;
+    display: inline-block;
+    border: 3px solid;
+    margin: 20px;
+}
+.friend > .name {
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    left: 80px;
+    height: 30px;
+    color: white;
+}
+.friend > a {
+    display: inline-block;
+    float: right;
+    color:black;
+    width: 180px;
+    position: relative;
+    top: 10px;
+    right: 50px;
+}
+.friend > a:hover {
+    text-decoration: none;
+    color:black;
+}
+.friend > a:link {
+     text-decoration: none;
+    color:black;
+}
+.friend > a > .openPage {
+    width: 180px;
+    position: relative;
+}
+.friend > .sendMessage {
+    display: inline-block;
+    float: right;
+    color:black;
+    width: 180px;
+    position: relative;
+    top: 50px;
+    left: 130px;
+}
+.friends > .friend {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#752201+-1,bf6e4e+13,bf6e4e+87,8c3310+99 */
+    background: #752201; /* Old browsers */
+    background: -moz-linear-gradient(top,  #584937 -1%,#D3A471 13%,#D3A471 87%,#584937 99%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, #584937 -1%,#D3A471 13%,#D3A471 87%,#584937 99%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #584937 -1%,#D3A471 13%,#D3A471 87%,#584937 99%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #584937 -1%,#D3A471 13%,#D3A471 87%,#584937 99%); /* IE10+ */
+    background: linear-gradient(to bottom,  #584937 -1%,#D3A471 13%,#D3A471 87%,#584937 99%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#752201', endColorstr='#8c3310',GradientType=0 ); /* IE6-9 */
+}
+.center.bot {
+    background-image: url("../img/center_bottom.png");
+    background-size: 100% 70px;
+    background-repeat: no-repeat;
+    float: left;
+    width: 100%;
+    height: 70px;
+    margin-left: 0px;
+}
+
+.hidd {
+    visibility: hidden;
+}
+.vis {
+    visibility: visible;
+}
+.separator {
+    width: 100%;
+}
+
+
+
+

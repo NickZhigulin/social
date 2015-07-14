@@ -15,6 +15,9 @@ index = require('./routes/index')
 home = require('./routes/home')
 user = require('./routes/user')
 chat = require('./routes/chat')
+friends = require('./routes/friends')
+alboms = require('./routes/alboms')
+news = require('./routes/news')
 
 mongoose.connect('mongodb://127.0.0.1/test')
 
@@ -43,6 +46,9 @@ app.use '/', index
 app.use '/home', home
 app.use '/user',  user
 app.use '/chat', chat
+app.use '/friends', friends
+app.use '/alboms', alboms
+app.use '/news', news
 # catch 404 and forward to error handler
 app.use (req, res, next) ->
   console.log "error: ", err

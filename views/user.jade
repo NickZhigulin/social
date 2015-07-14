@@ -21,21 +21,21 @@ html(ng-app="user")
         .row
             .menuAll
                 .menu.top
-                a(href="", ng-click="home()")
+                a(href="/home")
                     .menu.button
                         | Home page
-                a(href="", ng-click="friends()")
+                a(href="/friends")
                     .menu.button
-                        | Friends
-                a(href="", ng-click="chatrooms()")
+                        |Friends
+                a(href="/chat")
                     .menu.button
-                        | Chatrooms
-                a(href="", ng-click="alboms()")
+                        |Chatrooms
+                a(href="/alboms")
                     .menu.button
-                        | Alboms
-                a(href="", ng-click="news()")
+                        |Alboms
+                a(href="/news")
                     .menu.button
-                        | News
+                        |News
                 .menu.bottom
             .center
                 .center.topp
@@ -63,12 +63,6 @@ html(ng-app="user")
                             .text
                                 |Send message
                     .menu.bottom
-            .addNews.hidd(ng-class="add")
-                textarea(type="text", class="form-control", rows="5", placeholder="Input your text...", ng-model='mess')
-                button.btn.btn-default(ng-click="sendNews()")
-                    | Submit
-                button.btn.btn-default(ng-click="add='hidd'")
-                    | Cancel
             .searchWindow.hidd(ng-class="Sch")
                 .topText
                     | Input name for search

@@ -1,4 +1,4 @@
-html(ng-app="home")
+html(ng-app="news")
     head(lang='en')
         meta(charset='UTF-8')
         title
@@ -11,7 +11,7 @@ html(ng-app="home")
         script(src='/js/angular.min.js')
         script(src='/js/angular-route.js')
         script(src="/socket.io/socket.io.js")
-        script(src='/js/home.js')
+        script(src='/js/news.js')
     body.container-fluid(ng-controller="page")
         .row
             .head
@@ -34,14 +34,12 @@ html(ng-app="home")
                  a(href="/alboms")
                     .menu.button
                         |Alboms
-                 a(href="/news", ng-click="news()")
+                 a(href="/news")
                     .menu.button
                         |News
                 .menu.bottom
             .center
                 .center.topp
-                    button.added(ng-click="add='vis'")
-                     |Add News
                 .lenta
                     .block(ng-repeat="text in history" )
                         .close.glyphicon.glyphicon-remove(ng-click="close(history[$index].id)")
@@ -56,24 +54,6 @@ html(ng-app="home")
                 img.frame(src="/img/frame_avatar.png" ng-click="clickavatar='vis'")
                 .avatar
                     img(ng-src="{{user.avatar}}")
-                .addAvatar.hidd(ng-class="clickavatar")
-                    .text
-                        |Upload a new photo
-                        br
-                        |Size of your foto
-                        br
-                        |should be 240x270 px
-                    form.post(enctype='multipart/form-data', action='/home/avatar', method='post')
-                        input.file(type='file', name='userPhoto')
-                        input.but(type='submit', value='Upload Image', name='submit')
-                        button.but(type="button" ng-click="cancel()")
-                            |Cancel
-            .addNews.hidd(ng-class="add")
-                textarea(type="text", class="form-control", rows="5", placeholder="Input your text...", ng-model='mess')
-                button.btn.btn-default(ng-click="sendNews()")
-                    | Submit
-                button.btn.btn-default(ng-click="add='hidd'")
-                    |Cancel
             .searchWindow.hidd(ng-class="Sch")
                 .topText
                     |Input name for search

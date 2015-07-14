@@ -16,19 +16,20 @@ router.get '/:nickname/data', auth.auth, (req,res) ->
         history:doc.history
       }
       data.friend = 'Add friend' if !user.friends.length
-      user.friends.filter (el) ->
-        if el == req.params.nickname
-           data.friend = 'Delete friend'
-           return true
-        else
-           data.friend = 'Add friend'
-           return true
+      user.friends.forEach (el) ->
+        console.log "el",el,"req.params.nickname",req.params.nickname
+        data.friend = 'Delete friend' if el.name == req.params.nickname
+        data.friend = 'Add friend' if el.name != req.params.nickname
       res.send(data)
 
 router.get '/:nickname/friend', auth.auth, (req,res) ->
   models.User.findOne {nickname: req.user.nickname}, (err,user) ->
     models.User.findOne {nickname: req.params.nickname}, (err,friend) ->
-      user.friends.push(friend.nickname)
+      name={
+        name:friend.nickname
+        avatar:friend.avatar
+      }
+      user.friends.push(name)
       user.markModified('friends')
       data = {
         friend:'Delete friend'
@@ -40,7 +41,7 @@ router.get '/:nickname/delete', auth.auth, (req,res) ->
   models.User.findOne {nickname: req.user.nickname}, (err,user) ->
     models.User.findOne {nickname: req.params.nickname}, (err,friend) ->
       user.friends = user.friends.filter((el) ->
-        return el != req.params.nickname
+        return el.name != req.params.nickname
       )
       data = {
         friend:'Add friend'
@@ -71,6 +72,7 @@ router.get '/:nickname/chat', auth.auth, (req,res) ->
     user.markModified("chatrooms")
     user.save (err) ->
   models.User.findOne {nickname: req.params.nickname}, (err,user) ->
+    chat.name = req.user.nickname
     user.chatrooms.push chat if !user.chatrooms.length
     user.chatrooms.filter (el) ->
       console.log("el",el)

@@ -41,7 +41,6 @@ home.controller('page', function($scope, $http) {
       console.log($scope.find)
       $scope.search="";
       $scope.find = data
-      console.log(data)
     })
   };
   $scope.cancel = function(data){
@@ -52,7 +51,6 @@ home.controller('page', function($scope, $http) {
     $scope.user.avatar = avatar
     $scope.$apply()
   })
-//arr = _.sortBy(arr,function(el){
-//  return el.id
+
 });
 

@@ -3,6 +3,7 @@ multer = require('multer')
 models = require('../lib/db').models
 auth = require('../lib/auth')
 socket = require('../lib/socket')
+_ = require('underscore')
 router = express.Router()
 
 router.get '/', auth.auth, (req,res, next) ->
@@ -74,6 +75,7 @@ router.post '/avatar', (req,res) ->
     doc.save (err) ->
       socket.getIo().to(req.user.nickname).emit 'avatar', doc.avatar
       res.redirect '/home'
+
 
 
 module.exports = router

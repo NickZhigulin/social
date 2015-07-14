@@ -1,18 +1,16 @@
 mongoose = require('mongoose')
 
+
 schema = new mongoose.Schema
     email: String
     password: String
     nickname: String
     avatar: String
     friends: []
-    history:[]
-    news:[]
+    history: []
+    news: []
     chatrooms: []
-    albom:
-        number: Number
-        name: String
-        pictures: []
+    albom: []
     created_at:
         type: Date
         default: Date.now

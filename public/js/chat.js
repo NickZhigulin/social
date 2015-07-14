@@ -24,7 +24,7 @@ chat.controller('page', function($scope, $http) {
                     $scope.activechatroom=el;
                     count++
                 }
-                $('.chatArea').scrollTop(9000000)
+                $('.chatArea').scrollTop(90000)
                 el.history = history
             })
         })
@@ -47,7 +47,7 @@ chat.controller('page', function($scope, $http) {
             $http.get('/chat/message', {params: message}).success(function (history) {
                 $scope.activechatroom.history = history
                 $scope.chatMessage = ""
-                $('.chatArea').scrollTop(9000000)
+                $('.chatArea').scrollTop(90000)
             })
         }
     }
@@ -66,5 +66,6 @@ chat.controller('page', function($scope, $http) {
         console.log("send",data)
         $scope.activechatroom.history = data
         $scope.$apply()
+        $('.chatArea').scrollTop(9000000)
     })
 })
