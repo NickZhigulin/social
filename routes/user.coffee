@@ -14,12 +14,10 @@ router.get '/:nickname/data', auth.auth, (req,res) ->
           nickname:doc.nickname
           avatar: doc.avatar
         history:doc.history
+        friend:"Add friend"
       }
-      data.friend = 'Add friend' if !user.friends.length
       user.friends.forEach (el) ->
-        console.log "el",el,"req.params.nickname",req.params.nickname
         data.friend = 'Delete friend' if el.name == req.params.nickname
-        data.friend = 'Add friend' if el.name != req.params.nickname
       res.send(data)
 
 router.get '/:nickname/friend', auth.auth, (req,res) ->

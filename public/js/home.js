@@ -13,7 +13,9 @@ home.controller('page', function($scope, $http) {
     socket.emit('subscribe', {_id: $scope.user.nickname});
   });
   $scope.sendNews = function() {
-    var send = {mess:$scope.mess};
+    var send = {
+      mess:$scope.mess
+    };
     $http.get('home/history',{params:send}).success(function(data){
       $scope.history = data.reverse();
       $scope.add ="hidd";

@@ -46,7 +46,7 @@ html(ng-app="home")
                     .block(ng-repeat="text in history" )
                         .close.glyphicon.glyphicon-remove(ng-click="close(history[$index].id)")
                         .nick
-                            |{{user.nickname}}:
+                            |{{history[$index].name}}:
                         br
                         .news
                             |{{history[$index].text}}

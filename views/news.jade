@@ -42,9 +42,8 @@ html(ng-app="news")
                 .center.topp
                 .lenta
                     .block(ng-repeat="text in history" )
-                        .close.glyphicon.glyphicon-remove(ng-click="close(history[$index].id)")
                         .nick
-                            |{{user.nickname}}:
+                            |{{history[$index].name}}:
                         br
                         .news
                             |{{history[$index].text}}

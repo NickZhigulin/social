@@ -36,6 +36,7 @@ router.get '/history', auth.auth, (req, res, next) ->
     id = id.setTime(time.getTime())
     arr = {
       id:id
+      name:req.user.nickname
       text: req.query.mess
     }
     doc.history.push(arr)
