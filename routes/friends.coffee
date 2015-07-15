@@ -14,7 +14,6 @@ router.get '/user', auth.auth, (req, res, next) ->
         avatar: doc.avatar
       friends:doc.friends
     }
-    console.log("doc",doc.friends)
     res.send(data)
 
 

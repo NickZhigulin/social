@@ -55,30 +55,28 @@ router.get '/:nickname/chat', auth.auth, (req,res) ->
   chat = {
     id:id
     name: req.params.nickname
+    active: false
   }
-  models.Chat.find { id: chat.id }, (err, model) ->
+  models.Chat.find { name: chat.name }, (err, model) ->
     if !model.length
       models.Chat.create chat, (err, doc) ->
+  count = 0
   models.User.findOne {nickname: req.user.nickname}, (err,user) ->
     user.chatrooms.push chat if !user.chatrooms.length
-    user.chatrooms.filter (el) ->
-      if el.name == req.params.nickname
-        return true
-      else
-        user.chatrooms.push chat
-        return true
+    user.chatrooms.forEach((el) ->
+      count++ if el.name == req.params.nickname
+    )
+    user.chatrooms.push(chat) if !count
     user.markModified("chatrooms")
     user.save (err) ->
+  count = 0
   models.User.findOne {nickname: req.params.nickname}, (err,user) ->
     chat.name = req.user.nickname
     user.chatrooms.push chat if !user.chatrooms.length
-    user.chatrooms.filter (el) ->
-      console.log("el",el)
-      if el.name == req.user.nickname
-        return true
-      else
-        user.chatrooms.push chat
-        return true
+    user.chatrooms.filter((el) ->
+      count++ if el.name == req.user.nickname
+    )
+    user.chatrooms.push chat if !count
     user.markModified("chatrooms")
     user.save (err) ->
       res.send()

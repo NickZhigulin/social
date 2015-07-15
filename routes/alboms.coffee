@@ -33,7 +33,6 @@ router.get '/newAlbom', auth.auth, (req,res,next) ->
 
 router.get '/close/albom', auth.auth, (req,res) ->
   models.User.findOne {nickname:req.user.nickname}, (err, doc) ->
-    console.log "req",req.query.name
     doc.albom = doc.albom.filter (el) ->
       return el.name != req.query.name
     doc.markModified("albom")
@@ -49,7 +48,6 @@ router.get '/close/picture', auth.auth, (req,res) ->
         )
       return
     )
-    console.log "doc", doc.albom
     doc.markModified("albom")
     doc.save (err) ->
         res.send(doc.albom)
@@ -75,7 +73,6 @@ router.use multer(
 
 router.post '/upload/:name', auth.auth, (req,res) ->
   models.User.findOne {nickname:req.user.nickname}, (err, doc) ->
-    console.log("req.files",req.files)
     pic = {
       name:req.files.picture.name
       picture:"/img/alboms/"+req.files.picture.name

@@ -17,7 +17,7 @@ chat.controller('page', function($scope, $http) {
         $scope.chatroom.forEach(function (el) {
             console.log("el", el)
             id = {
-                id: el.id
+                name: el.name
             }
             $http.get('/chat/rooms', {params: id}).success(function (history) {
                 if (!count) {
@@ -40,7 +40,7 @@ chat.controller('page', function($scope, $http) {
     }
     $scope.send = function (data) {
         message = {
-            id:$scope.activechatroom.id,
+            name:$scope.activechatroom.name,
             message:$scope.chatMessage
         }
         if ($scope.chatMessage) {

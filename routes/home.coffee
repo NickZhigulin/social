@@ -70,7 +70,6 @@ router.use multer(
 )
 router.post '/avatar', (req,res) ->
   models.User.findOne {nickname:req.user.nickname}, (err, doc) ->
-    console.log("req.files",req.files.userPhoto.name)
     doc.avatar = "/img/upload/"+req.files.userPhoto.name
     doc.markModified('avatar')
     doc.save (err) ->

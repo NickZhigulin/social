@@ -8,11 +8,12 @@ router.get '/', auth.auth, (req,res, next) ->
   res.render 'chat'
 
 router.get '/rooms', auth.auth, (req,res) ->
-  models.Chat.findOne {id:req.query.id},(err, doc) ->
+  models.Chat.findOne {name:req.query.name},(err, doc) ->
     res.send(doc.history)
 
 router.get '/message',auth.auth, (req,res) ->
-  models.Chat.findOne {id:req.query.id},(err, doc) ->
+  models.Chat.findOne {name:req.query.name},(err, doc) ->
+    console.log "doc", doc
     data= {
       name:req.user.nickname
       text:req.query.message

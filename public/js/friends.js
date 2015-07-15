@@ -22,7 +22,10 @@ friends.controller('page', function($scope, $http) {
     })
   };
   $scope.sendmess = function(data) {
-    $http.get( '/chat').success(function (data){
+    var name ={
+      name:data
+    }
+    $http.get('/user/'+data+'/chat').success(function (el){
       location.assign('/chat')
     })
   }
