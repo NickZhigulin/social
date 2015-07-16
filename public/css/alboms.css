@@ -117,9 +117,48 @@
 }
 .albom > .folder {
     width: 50%;
-    height: 120px;
+    height: 150px;
     margin-left: 70px;
     padding-bottom: 15px;
+    transition:width 0.5s ease;
+}
+.full {
+    display: inline-block;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 15;
+}
+.fullImg {
+    position: fixed;
+    display: block;
+    margin:0 auto;
+    height: auto;
+    width: 100%;
+    top: 10%;
+}
+.fullImg > div {
+    position: relative;
+    display: block;
+    margin:0 auto;
+    width: auto;
+    max-height: 480px;
+    max-width: 640px;
+}
+.fullImg > div > .img {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+
+}
+.fullImg > div > ._close {
+    height: 30px;
+    position: relative;
+    bottom: 230px;
 }
 /*добавление фото в альбом*/
 .addPicture {
@@ -285,5 +324,7 @@ div.menuAll > a:hover {
     margin-bottom: 10px;
     margin-left: 25px ;
 }
+
+
 
 

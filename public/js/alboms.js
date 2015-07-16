@@ -14,11 +14,9 @@ alboms.controller('page', function($scope, $http) {
     search = {
       name:$scope.search
     };
-    $http.get('home/search',{params:search}).success(function(data){
-      console.log($scope.find)
+    $http.get('/home/search',{params:search}).success(function(data){
       $scope.search="";
       $scope.find = data
-      console.log(data)
     })
   };
   $scope._add = function(data) {
@@ -40,21 +38,18 @@ alboms.controller('page', function($scope, $http) {
       })
   }
   $scope.closeAlbom = function(data){
-    console.log("albom:", data)
     var rafff = {
       name:data
     }
-    $http.get('alboms/close/albom', {params: rafff}).success(function (data) {
+    $http.get('/alboms/close/albom', {params: rafff}).success(function (data) {
       $scope.alboms = data
     })
   }
   $scope.albo = function(data){
     $scope.allAlbom = $scope.alboms
     $scope.alboms = $scope.alboms.filter(function(el){
-      console.log("data",data,"el",el.name)
       return data == el.name
     })
-    console.log("name",$scope.alboms[0].name)
     $scope.activeAlbom = "/alboms/upload/"+$scope.alboms[0].name
     $scope.nameAlb = $scope.alboms[0].name
     $scope.albom = $scope.alboms[0].picture
@@ -69,18 +64,26 @@ alboms.controller('page', function($scope, $http) {
     $scope.vissAlbom='none'
   }
   $scope.closePicture = function(data){
-    console.log("picture:", data)
     picture = {
       name:data,
       albom:$scope.nameAlb
     }
-    $http.get('alboms/close/picture',{params:picture}).success(function(data){
+    $http.get('/alboms/close/picture',{params:picture}).success(function(data){
       $scope.alboms = data.filter(function(el){
-        console.log("wl",el)
         return $scope.nameAlb == el.name
-      })
+      });
       $scope.albom = $scope.alboms[0].picture
     })
+  }
+  $scope.cancel=function(data){
+    $scope.uploadWind = 'hidd'
+  }
+  $scope.fullSize = function(data){
+    $scope.full = data
+    $scope.size = "unnone"
+  }
+  $scope.closeFullPicture = function(data) {
+    $scope.size = "none"
   }
 });
 

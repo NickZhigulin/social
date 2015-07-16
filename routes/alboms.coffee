@@ -83,7 +83,7 @@ router.post '/upload/:name', auth.auth, (req,res) ->
     )
     doc.markModified('albom')
     doc.save (err) ->
-      res.render 'alboms'
+      res.redirect '/alboms'
 
 
 

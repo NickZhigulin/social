@@ -52,7 +52,7 @@ html(ng-app="alboms")
                         img.folder(src="/img/folder.png")
                     .albom.none(ng-class="vissAlbom", ng-repeat="name in albom")
                         .close.glyphicon.glyphicon-remove(ng-click="closePicture(albom[$index].name)")
-                        img.folder(ng-src="{{albom[$index].picture}}")
+                        img.folder(ng-src="{{albom[$index].picture}}" ng-click="fullSize(albom[$index].picture)")
                 .center.bot
             .avatarAll
                 img.frame(src="/img/frame_avatar.png" ng-click="clickavatar='vis'")
@@ -90,3 +90,8 @@ html(ng-app="alboms")
                 input.but(type='submit', value='Upload Image', name='submit')
                 button.but(type="button" ng-click="cancel()")
                     |Cancel
+        .full.none(ng-class = "size")
+            .fullImg
+                div
+                    img.img(ng-src = "{{full}}")
+                    img._close(src="/img/close.png" ng-click="closeFullPicture()")
