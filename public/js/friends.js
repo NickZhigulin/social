@@ -29,5 +29,10 @@ friends.controller('page', function($scope, $http) {
       location.assign('/chat')
     })
   }
+  $scope.exit = function(data) {
+    $http.get('/home/exit').success(function (data) {
+      location.assign('/')
+    })
+  }
 });
 

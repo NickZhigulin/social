@@ -68,4 +68,9 @@ chat.controller('page', function($scope, $http) {
         $scope.$apply()
         $('.chatArea').scrollTop(9000000)
     })
+    $scope.exit = function(data) {
+        $http.get('/home/exit').success(function (data) {
+            location.assign('/')
+        })
+    }
 })

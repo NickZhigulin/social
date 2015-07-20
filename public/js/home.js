@@ -39,7 +39,7 @@ home.controller('page', function($scope, $http) {
     search = {
       name:$scope.search
     };
-    $http.get('home/search',{params:search}).success(function(data){
+    $http.get('/home/search',{params:search}).success(function(data){
       console.log($scope.find)
       $scope.search="";
       $scope.find = data
@@ -53,6 +53,10 @@ home.controller('page', function($scope, $http) {
     $scope.user.avatar = avatar
     $scope.$apply()
   })
-
+  $scope.exit = function(data){
+    $http.get('/home/exit').success(function(data){
+      location.assign('/')
+    })
+  }
 });
 

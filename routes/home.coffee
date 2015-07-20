@@ -27,6 +27,7 @@ router.get '/search',auth.auth, (req,res, next) ->
         name:doc[0].nickname
         avatar:doc[0].avatar
         }] if doc.length
+    ssend = "" if doc[0].nickname == req.query.name
     res.send(ssend)
 
 router.get '/history', auth.auth, (req, res, next) ->
@@ -52,6 +53,10 @@ router.get '/close', auth.auth, (req,res,next) ->
     doc.markModified('history')
     doc.save (err) ->
       res.send(doc.history)
+
+router.get '/exit', (req,res) ->
+  req.logout()
+  res.redirect '/'
 
 router.get '/', (req, res, next) ->
   res.sendfile "home"

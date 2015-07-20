@@ -85,5 +85,10 @@ alboms.controller('page', function($scope, $http) {
   $scope.closeFullPicture = function(data) {
     $scope.size = "none"
   }
+  $scope.exit = function(data) {
+    $http.get('/home/exit').success(function (data) {
+      location.assign('/')
+    })
+  }
 });
 

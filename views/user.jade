@@ -15,6 +15,8 @@ html(ng-app="user")
         .row
             .col-md-12.head
                 .headtext
+                    button.exit(ng-click="exit()")
+                        |Log out
                     |Welcome to the {{user.nickname}}'s Wonderland!
                     button.search(ng-click="Sch = 'vis'")
                         |Search

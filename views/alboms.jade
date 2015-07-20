@@ -16,6 +16,8 @@ html(ng-app="alboms")
         .row
             .head
                 .headtext
+                    button.exit(ng-click="exit()")
+                        |Log out
                     |Welcome to Wonderland, {{user.nickname}}!
                     button.search(ng-click="Sch = 'vis'")
                         |Search

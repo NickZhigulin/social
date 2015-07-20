@@ -34,5 +34,10 @@ news.controller('page', function($scope, $http) {
       })
     }
   })
+  $scope.exit = function(data) {
+    $http.get('/home/exit').success(function (data) {
+      location.assign('/')
+    })
+  }
 })
 

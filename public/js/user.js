@@ -28,4 +28,9 @@ user.controller('page', function($scope, $http, $location) {
             location.assign('/chat')
         })
     }
+    $scope.exit = function(data) {
+        $http.get('/home/exit').success(function (data) {
+            location.assign('/')
+        })
+    }
 })
