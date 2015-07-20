@@ -20,9 +20,8 @@ chat.controller('page', function($scope, $http) {
                 name: el.name
             }
             $http.get('/chat/rooms', {params: id}).success(function (history) {
-                if (!count) {
+                if (el.active) {
                     $scope.activechatroom=el;
-                    count++
                 }
                 $('.chatArea').scrollTop(90000)
                 el.history = history
@@ -30,13 +29,19 @@ chat.controller('page', function($scope, $http) {
         })
     });
     $scope.active = function (data) {
+        console.log("data",data)
         $scope.chatroom.forEach(function (el) {
             if (el.name == data) {
-                $scope.activechatroom = el
+                data = {
+                    name: data
+                }
+                $http.get('/chat/activeChat', {params: data}).success(function (history) {
+                    console.log($scope.activechatroom)
+                    $scope.activechatroom = el
+                })
             }
         })
-
-        console.log("active",$scope.activechatroom)
+        console.log($scope.activechatroom)
     }
     $scope.send = function (data) {
         message = {

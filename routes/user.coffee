@@ -55,7 +55,7 @@ router.get '/:nickname/chat', auth.auth, (req,res) ->
   chat = {
     id:id
     name: req.params.nickname
-    active: false
+    active: true
   }
   models.Chat.find { name: chat.name }, (err, model) ->
     if !model.length

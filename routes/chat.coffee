@@ -25,4 +25,18 @@ router.get '/message',auth.auth, (req,res) ->
       socket.getIo().to(req.query.id).emit 'chat', doc.history
       res.send(doc.history)
 
+router.get '/activeChat', auth.auth, (req,res) ->
+  models.User.findOne {nickname:req.user.nickname},(err, doc) ->
+    doc.chatrooms.forEach((el)->
+      models.Chat.findOne {name:el.name},(err, chat) ->
+        console.log("el do:", el)
+        el.active = false
+        el.active = true if req.query.name == chat.name
+        console.log("el after:", el)
+        doc.markModified('chatrooms')
+        doc.save (err) ->
+    )
+    console.log("doc :", doc.chatrooms)
+    res.send()
+
 module.exports = router
