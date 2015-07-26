@@ -85,7 +85,7 @@ server = http.createServer(app);
 ###
 
 socket.boot server
-server.listen(port);
-server.on('error', () ->);
-server.on('listening', () ->
-  console.log "socket connect")
+##server.listen(port);
+#server.on('error', () ->);
+#server.on('listening', () ->
+#  console.log "socket connect")
