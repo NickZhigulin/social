@@ -34,12 +34,12 @@ app.use(bodyParser.urlencoded(extended= false))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(session(
-  secret= 'keyboard cat'
-  resave= false
-  saveUninitialized= true
+  secret : 'keyboard cat'
+  resave : false
+  saveUninitialized:true
   cookie:
-    maxAge= 365 * 24 * 60 * 60
-    httpOnly= false))
+    maxAge: 365 * 24 * 60 * 60
+    httpOnly: false))
 auth.init app
 app.use('/', index)
 app.use('/home', home)
