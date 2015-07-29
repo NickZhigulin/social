@@ -30,7 +30,7 @@ app.set "views", path.join(__dirname, "views")
 app.set 'view engine', 'jade'
 app.use logger('dev')
 app.use bodyParser.json()
-app.use bodyParser.urlencoded(extended= false)
+app.use bodyParser.urlencoded(extended: false)
 app.use cookieParser()
 app.use express.static(path.join(__dirname, 'public'))
 app.use session(
@@ -58,18 +58,18 @@ app.use (req, res, next) ->
 if app.get('env') == 'development'
   app.use (err, req, res, next) ->
     console.log "error: ", err
-res.status err.status or 500
-res.render 'error',
-  message: err.message
-error: err
-return
+    res.status err.status or 500
+    res.render 'error',
+    message: err.message
+    error: err
+    return
 app.use (err, req, res, next) ->
-console.log "err:", err
-res.status err.status or 500
-res.render 'error',
+  console.log "err:", err
+  res.status err.status or 500
+  res.render 'error',
   message: err.message
-error: err
-returna
+  error: err
+  returna
 
 port = 3000
 app.set 'port', port
