@@ -34,12 +34,12 @@ app.use bodyParser.urlencoded(extended= false)
 app.use cookieParser()
 app.use express.static(path.join(__dirname, 'public'))
 app.use session(
-    secret : 'keyboard cat'
-resave : false
-saveUninitialized:true
-cookie:
+  secret : 'keyboard cat'
+  resave : false
+  saveUninitialized:true
+  cookie:
     maxAge: 365 * 24 * 60 * 60
-httpOnly: false)
+  httpOnly: false)
 auth.init app
 app.use '/', index
 app.use '/home', home
@@ -50,26 +50,26 @@ app.use '/alboms', alboms
 app.use '/news', news
 # catch 404 and forward to error handler
 app.use (req, res, next) ->
-console.log "error: ", err
-err = new Error('Not Found')
-err.status = 404
-next err
-return
+  console.log "error: ", err
+  err = new Error('Not Found')
+  err.status = 404
+  next err
+  return
 if app.get('env') == 'development'
   app.use (err, req, res, next) ->
-  console.log "error: ", err
+    console.log "error: ", err
 res.status err.status or 500
 res.render 'error',
-    message: err.message
+  message: err.message
 error: err
 return
 app.use (err, req, res, next) ->
 console.log "err:", err
 res.status err.status or 500
 res.render 'error',
-    message: err.message
+  message: err.message
 error: err
-return
+returna
 
 port = 3000
 app.set 'port', port
