@@ -1,2 +1,2 @@
 var coffee = require('coffee-script');
-coffee.compile('./app.js');
+coffee.compile('./app.coffee');
