@@ -30,15 +30,16 @@ router.get '/search',auth.auth, (req,res, next) ->
     ssend = "" if doc[0].nickname == req.query.name
     res.send(ssend)
 
-router.get '/history', auth.auth, (req, res, next) ->
+router.post '/history', auth.auth, (req, res, next) ->
   models.User.findOne {nickname:req.user.nickname}, (err, doc) ->
     time = new Date()
     id = new Date()
     id = id.setTime(time.getTime())
+    console.log "req", req.body
     arr = {
       id:id
       name:req.user.nickname
-      text: req.query.mess
+      text: req.body.mess
     }
     doc.history.push(arr)
     doc.markModified('history')

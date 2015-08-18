@@ -16,7 +16,7 @@ home.controller('page', function($scope, $http) {
     var send = {
       mess:$scope.mess
     };
-    $http.get('home/history',{params:send}).success(function(data){
+    $http.post('home/history', send).success(function(data) {
       $scope.history = data.reverse();
       $scope.add ="hidd";
       $scope.mess = " "
