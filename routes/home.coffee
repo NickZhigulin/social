@@ -21,13 +21,20 @@ router.get '/user', auth.auth, (req, res, next) ->
     res.send(data)
 
 
-router.get '/search',auth.auth, (req,res, next) ->
-  models.User.find {"nickname" :req.query.name}, (err,doc) ->
+router.post '/search',auth.auth, (req,res, next) ->
+  models.User.find {"nickname" :req.body.name}, (err,doc) ->
+    console.log "doc", doc
+    ssend = "User not found"
+    console.log "doc", doc.length
+    res.send(ssend)
+    procces.exit()
+#    if !doc.length
     ssend = [{
         name:doc[0].nickname
         avatar:doc[0].avatar
         }] if doc.length
-    ssend = "" if doc[0].nickname == req.query.name
+    ssend = "" if doc[0].nickname == req.user.nickname
+    ssend = "User not found" if ssend = ""
     res.send(ssend)
 
 router.post '/history', auth.auth, (req, res, next) ->
@@ -35,7 +42,6 @@ router.post '/history', auth.auth, (req, res, next) ->
     time = new Date()
     id = new Date()
     id = id.setTime(time.getTime())
-    console.log "req", req.body
     arr = {
       id:id
       name:req.user.nickname
@@ -46,16 +52,16 @@ router.post '/history', auth.auth, (req, res, next) ->
     doc.save (err) ->
       res.send(doc.history)
 
-router.get '/close', auth.auth, (req,res,next) ->
+router.post '/close', auth.auth, (req,res,next) ->
   models.User.findOne {nickname:req.user.nickname}, (err, doc) ->
     doc.history = doc.history.filter((el) ->
-      return Number(el.id) != Number(req.query.id)
+      return Number(el.id) != Number(req.body.id)
     )
     doc.markModified('history')
     doc.save (err) ->
       res.send(doc.history)
 
-router.get '/exit', (req,res) ->
+router.post '/exit', (req,res) ->
   req.logout()
   res.redirect '/'
 

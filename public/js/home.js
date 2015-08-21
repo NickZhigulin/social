@@ -30,7 +30,7 @@ home.controller('page', function($scope, $http) {
     close= {
       id:close[0].id
     };
-    $http.get('home/close',{params:close}).success(function(data){
+    $http.post('home/close',close).success(function(data){
       console.log("data",data);
       $scope.history = data
     })
@@ -39,8 +39,8 @@ home.controller('page', function($scope, $http) {
     search = {
       name:$scope.search
     };
-    $http.get('/home/search',{params:search}).success(function(data){
-      console.log($scope.find)
+    $http.post('/home/search',search).success(function(data){
+      console.log("data", data)
       $scope.search="";
       $scope.find = data
     })
@@ -54,7 +54,7 @@ home.controller('page', function($scope, $http) {
     $scope.$apply()
   })
   $scope.exit = function(data){
-    $http.get('/home/exit').success(function(data){
+    $http.post('/home/exit').success(function(data){
       location.assign('/')
     })
   }
