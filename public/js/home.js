@@ -16,7 +16,7 @@ home.controller('page', function($scope, $http) {
     var send = {
       mess:$scope.mess
     };
-    $http.post('home/history', send).success(function(data) {
+    $http.get('home/history', {params:send}).success(function(data) {
       $scope.history = data.reverse();
       $scope.add ="hidd";
       $scope.mess = " "
@@ -24,22 +24,22 @@ home.controller('page', function($scope, $http) {
   };
   $scope.close = function(data) {
     var close;
-    close = $scope.history.filter(function(el){
+    close = $scope.history.filter(function (el) {
       return el.id == data
     });
-    close= {
-      id:close[0].id
+    close = {
+      id: close[0].id
     };
-    $http.post('home/close',close).success(function(data){
-      console.log("data",data);
-      $scope.history = data
+    $http.post('home/close', close).success(function (data) {
+      console.log("data", data);
+      $scope.history = data.reverse();
     })
   };
   $scope._search = function(data) {
     search = {
       name:$scope.search
     };
-    $http.post('/home/search',search).success(function(data){
+    $http.get('/home/search',{params:search}).success(function(data){
       console.log("data", data)
       $scope.search="";
       $scope.find = data

@@ -21,23 +21,19 @@ router.get '/user', auth.auth, (req, res, next) ->
     res.send(data)
 
 
-router.post '/search',auth.auth, (req,res, next) ->
-  models.User.find {"nickname" :req.body.name}, (err,doc) ->
-    console.log "doc", doc
-    ssend = "User not found"
-    console.log "doc", doc.length
-    res.send(ssend)
-    procces.exit()
-#    if !doc.length
+router.get '/search',auth.auth, (req,res, next) ->
+  models.User.find {"nickname" :req.query.name}, (err,doc) ->
     ssend = [{
         name:doc[0].nickname
         avatar:doc[0].avatar
         }] if doc.length
-    ssend = "" if doc[0].nickname == req.user.nickname
-    ssend = "User not found" if ssend = ""
+    ssend = [{
+        name: "User not found"
+    }] if !ssend
+    console.log "send", ssend
     res.send(ssend)
 
-router.post '/history', auth.auth, (req, res, next) ->
+router.get '/history', auth.auth, (req, res, next) ->
   models.User.findOne {nickname:req.user.nickname}, (err, doc) ->
     time = new Date()
     id = new Date()
@@ -45,7 +41,7 @@ router.post '/history', auth.auth, (req, res, next) ->
     arr = {
       id:id
       name:req.user.nickname
-      text: req.body.mess
+      text: req.query.mess
     }
     doc.history.push(arr)
     doc.markModified('history')

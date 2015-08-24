@@ -52,6 +52,8 @@ html(ng-app="chat")
                             .message(ng-repeat="name in activechatroom.history")
                                 .name
                                     |{{activechatroom.history[$index].name}}:
+                                    .time
+                                        |{{activechatroom.history[$index].time}}
                                 .text
                                     |{{activechatroom.history[$index].text}}
                         .chatInput

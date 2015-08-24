@@ -49,10 +49,9 @@ chat.controller('page', function($scope, $http) {
             message:$scope.chatMessage
         }
         if ($scope.chatMessage) {
-            $http.get('/chat/message', {params: message}).success(function (history) {
-                $scope.activechatroom.history = history
+            $http.post('/chat/message', message).success(function (history) {
+                $scope.activechatroom.history = history.reverse()
                 $scope.chatMessage = ""
-                $('.chatArea').scrollTop(90000)
             })
         }
     }

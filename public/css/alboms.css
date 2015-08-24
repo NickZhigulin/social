@@ -73,10 +73,11 @@
     margin: 0 auto;
 
 }
-.fullImg > div > ._close {
+._close {
     height: 30px;
     position: relative;
-    bottom: 230px;
+    float: right;
+    padding: 5px 15px 0px 0px;
 }
 /*добавление фото в альбом*/
 .addPicture {

@@ -42,6 +42,10 @@ div.chats > div > div.chatArea {
 .chat * .name {
     padding: 10px 0px 0px 10px;
 }
+.chat * .time {
+    padding-right: 20px;
+    float: right;
+}
 .chat * .text {
     padding: 10px 0px 10px 30px;
 }

@@ -31,20 +31,21 @@ router.get '/newAlbom', auth.auth, (req,res,next) ->
     doc.save (err) ->
       res.send(doc.albom)
 
-router.get '/close/albom', auth.auth, (req,res) ->
+router.post '/close/albom', auth.auth, (req,res) ->
   models.User.findOne {nickname:req.user.nickname}, (err, doc) ->
     doc.albom = doc.albom.filter (el) ->
-      return el.name != req.query.name
+      return el.name != req.body.name
     doc.markModified("albom")
     doc.save (err) ->
       res.redirect '/alboms'
 
-router.get '/close/picture', auth.auth, (req,res) ->
+router.post '/close/picture', auth.auth, (req,res) ->
   models.User.findOne {nickname:req.user.nickname}, (err, doc) ->
+    console.log "sfsdfsdf"
     doc.albom.filter((el) ->
-      if el.name == req.query.albom
+      if el.name == req.body.albom
         el.picture = el.picture.filter((el2) ->
-          el2.name != req.query.name
+          el2.name != req.body.name
         )
       return
     )

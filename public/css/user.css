@@ -1,4 +1,18 @@
 
+.headtext {
+    font-family: Uper;
+    text-align: center;
+    margin-left: 10px;
+    color:#F4DD85;
+    font-size: 39pt;
+    width: 100%;
+    height: 100%;
+}
+.headtext > div{
+    width: 80%;
+    height: 100%;
+    float: left;
+}
 .avatarMenu {
     display: inline-block;
     height: 400px;

@@ -41,7 +41,7 @@ alboms.controller('page', function($scope, $http) {
     var rafff = {
       name:data
     }
-    $http.get('/alboms/close/albom', {params: rafff}).success(function (data) {
+    $http.post('/alboms/close/albom',rafff).success(function (data) {
       $scope.alboms = data
     })
   }
@@ -68,7 +68,7 @@ alboms.controller('page', function($scope, $http) {
       name:data,
       albom:$scope.nameAlb
     }
-    $http.get('/alboms/close/picture',{params:picture}).success(function(data){
+    $http.post('/alboms/close/picture',picture).success(function(data){
       $scope.alboms = data.filter(function(el){
         return $scope.nameAlb == el.name
       });
@@ -86,7 +86,7 @@ alboms.controller('page', function($scope, $http) {
     $scope.size = "none"
   }
   $scope.exit = function(data) {
-    $http.get('/home/exit').success(function (data) {
+    $http.post('/home/exit').success(function (data) {
       location.assign('/')
     })
   }

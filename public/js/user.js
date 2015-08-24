@@ -29,7 +29,7 @@ user.controller('page', function($scope, $http, $location) {
         })
     }
     $scope.exit = function(data) {
-        $http.get('/home/exit').success(function (data) {
+        $http.post('/home/exit').success(function (data) {
             location.assign('/')
         })
     }

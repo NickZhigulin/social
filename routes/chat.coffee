@@ -11,18 +11,20 @@ router.get '/rooms', auth.auth, (req,res) ->
   models.Chat.findOne {name:req.query.name},(err, doc) ->
     res.send(doc.history)
 
-router.get '/message',auth.auth, (req,res) ->
-  models.Chat.findOne {name:req.query.name},(err, doc) ->
-    console.log "doc", doc
+router.post '/message',auth.auth, (req,res) ->
+  models.Chat.findOne {name:req.body.name},(err, doc) ->
+    time = new Date()
+    _data = time.getDate()+"."+time.getMonth()+"."+time.getFullYear()+"  "+time.getHours()+":"+time.getMinutes()
     data= {
       name:req.user.nickname
-      text:req.query.message
+      text:req.body.message
+      time:_data
     }
     doc.history = [] if doc.history == undefined
     doc.history.push(data)
     doc.markModified('history')
     doc.save (err) ->
-      socket.getIo().to(req.query.id).emit 'chat', doc.history
+      socket.getIo().to(req.body.id).emit 'chat', doc.history
       res.send(doc.history)
 
 router.get '/activeChat', auth.auth, (req,res) ->
