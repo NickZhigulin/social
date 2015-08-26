@@ -9,6 +9,7 @@ home.controller('page', function($scope, $http) {
     $scope.user = user.user;
     $scope.history = user.history.reverse();
     $scope.chatroom = user.chatrooms
+    $scope.add ='hidd'
     //$scope.news = user.news;
     socket.emit('subscribe', {_id: $scope.user.nickname});
   });
@@ -58,5 +59,8 @@ home.controller('page', function($scope, $http) {
       location.assign('/')
     })
   }
+  $.getJSON('', function(data){
+      console.log("data",data.ip)
+  });
 });
 

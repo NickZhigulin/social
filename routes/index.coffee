@@ -3,6 +3,7 @@ models = require('../lib/db').models
 auth = require('../lib/auth')
 router = express.Router()
 
+
 router.get '/',(req, res, next) ->
   res.render 'index'
 

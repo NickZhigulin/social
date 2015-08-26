@@ -71,9 +71,14 @@ html(ng-app="user")
                 .topText
                     | Input name for search
                 input.input(type="text" ng-model="search")
-                .result(ng-repeat="name in find" ng-click="friend(find[$index].name)")
-                    img.findAvatar(ng-src="{{find[$index].avatar}}")
-                    | {{find[$index].name}}
+                a(href='user/{{find[$index].name}}', ng-repeat="name in find", ng-if="find[$index].found")
+                    .result
+                        img.findAvatar(ng-src="{{find[$index].avatar}}")
+                        |{{find[$index].name}}
+                a(href='', ng-repeat="name in find", ng-if="find[$index].notfound")
+                    .result
+                        img.findAvatar(ng-src="{{find[$index].avatar}}")
+                        |{{find[$index].name}}
                 button.btn.btn-default(ng-click="_search()")
                     | OK
                 button.btn.btn-default(ng-click="Sch='hidd'")

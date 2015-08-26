@@ -30,17 +30,18 @@ html(ng-app="home")
                         | Home page
                 a(href="/friends")
                     .menu.button
-                        |Friends
+                        | Friends
                 a(href="/chat")
                     .menu.button
-                        |Chatrooms
-                 a(href="/alboms")
+                        | Chatrooms
+                a(href="/alboms")
                     .menu.button
-                        |Alboms
-                 a(href="/news", ng-click="news()")
+                        | Alboms
+                a(href="/news")
                     .menu.button
-                        |News
+                        | News
                 .menu.bottom
+            //home page
             .center
                 .center.topp
                     button.added(ng-click="add='vis'")
@@ -56,7 +57,7 @@ html(ng-app="home")
                         img.separator(src="/img/block_bot.png")
                 .center.bot
             .avatarAll
-                img.frame(src="/img/frame_avatar.png" ng-click="clickavatar='vis'")
+                img.frame(src="/img/frame_avatar.png", ng-click="clickavatar='vis'")
                 .avatar
                     img(ng-src="{{user.avatar}}")
                 .addAvatar.hidd(ng-class="clickavatar")
@@ -71,7 +72,7 @@ html(ng-app="home")
                         input.but(type='submit', value='Upload Image', name='submit')
                         button.but(type="button" ng-click="cancel()")
                             |Cancel
-            .addNews.hidd(ng-class="add")
+            .addNews(ng-class="add")
                 textarea(type="text", class="form-control", rows="5", placeholder="Input your text...", ng-model='mess')
                 button.btn.btn-default(ng-click="sendNews()")
                     | Submit
@@ -81,7 +82,11 @@ html(ng-app="home")
                 .topText
                     |Input name for search
                 input.input(type="text" ng-model="search")
-                a(href='user/{{find[$index].name}}', ng-repeat="name in find")
+                a(href='user/{{find[$index].name}}', ng-repeat="name in find", ng-if="find[$index].found")
+                    .result
+                        img.findAvatar(ng-src="{{find[$index].avatar}}")
+                        |{{find[$index].name}}
+                a(href='', ng-repeat="name in find", ng-if="find[$index].notfound")
                     .result
                         img.findAvatar(ng-src="{{find[$index].avatar}}")
                         |{{find[$index].name}}
@@ -89,3 +94,5 @@ html(ng-app="home")
                     | OK
                 button.btn.btn-default(ng-click="Sch='hidd'")
                     | Cancel
+
+

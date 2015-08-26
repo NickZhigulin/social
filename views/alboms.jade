@@ -34,10 +34,10 @@ html(ng-app="alboms")
                 a(href="/chat")
                     .menu.button
                         |Chatrooms
-                 a(href="/alboms")
+                a(href="/alboms")
                     .menu.button
                         |Alboms
-                 a(href="/news")
+                a(href="/news")
                     .menu.button
                         |News
                 .menu.bottom
@@ -65,7 +65,11 @@ html(ng-app="alboms")
             .topText
                 |Input name for search
             input.input(type="text" ng-model="search")
-            a(href='user/{{find[$index].name}}', ng-repeat="name in find")
+            a(href='user/{{find[$index].name}}', ng-repeat="name in find", ng-if="find[$index].found")
+                .result
+                    img.findAvatar(ng-src="{{find[$index].avatar}}")
+                    |{{find[$index].name}}
+            a(href='', ng-repeat="name in find", ng-if="find[$index].notfound")
                 .result
                     img.findAvatar(ng-src="{{find[$index].avatar}}")
                     |{{find[$index].name}}

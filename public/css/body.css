@@ -232,11 +232,11 @@ div.menuAll > a:hover {
     top: 70px;
     right: 10px;
 }
-.hidd {
-    visibility: hidden;
-}
 .vis {
     visibility: visible;
+}
+.hidd {
+    visibility: hidden;
 }
 .addNews {
     position: fixed;

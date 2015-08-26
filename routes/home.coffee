@@ -26,9 +26,11 @@ router.get '/search',auth.auth, (req,res, next) ->
     ssend = [{
         name:doc[0].nickname
         avatar:doc[0].avatar
+        found: true
         }] if doc.length
     ssend = [{
         name: "User not found"
+        notfound:true
     }] if !ssend
     console.log "send", ssend
     res.send(ssend)
