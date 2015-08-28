@@ -2,8 +2,10 @@ html(ng-app="home")
     head(lang='en')
         meta(charset='UTF-8')
         title
-        link(rel='stylesheet', href='/css/home.css')
         link(rel='stylesheet', href='/css/body.css')
+        link(rel='stylesheet', href='/css/friends.css')
+        link(rel='stylesheet', href='/css/chat.css')
+        link(rel='stylesheet', href='/css/albom.css')
         link(rel='stylesheet', href='/css/bootstrap.css')
         link(rel='stylesheet', href='/css/bootstrap-theme.css')
         script(src='/js/jquery-2.1.3.min.js')
@@ -13,7 +15,7 @@ html(ng-app="home")
         script(src='/js/angular-route.js')
         script(src="/socket.io/socket.io.js")
         script(src='/js/home.js')
-    body.container-fluid(ng-controller="page")
+    body.container-fluid(ng-controller="home")
         .row
             .head
                 .headtext
@@ -25,24 +27,24 @@ html(ng-app="home")
         .row
             .menuAll
                 .menu.top
-                a(href="/home")
+                a(href="", ng-click='activePage="home"')
                     .menu.button
-                        | Home page
-                a(href="/friends")
+                        | My wall
+                a(href="", ng-click='activePage="friends"')
                     .menu.button
                         | Friends
-                a(href="/chat")
+                a(href="", ng-click='activePage="chat"')
                     .menu.button
                         | Chatrooms
-                a(href="/alboms")
+                a(href="", ng-click='activePage="alboms"')
                     .menu.button
                         | Alboms
-                a(href="/news")
+                a(href="", ng-click='activePage="news"')
                     .menu.button
                         | News
                 .menu.bottom
-            //home page
-            .center
+            //home page *******************************************************************************
+            .center(ng-if='activePage=="home"',ng-controller='home')
                 .center.topp
                     button.added(ng-click="add='vis'")
                      |Add News
@@ -56,7 +58,7 @@ html(ng-app="home")
                             |{{history[$index].text}}
                         img.separator(src="/img/block_bot.png")
                 .center.bot
-            .avatarAll
+            .avatarAll(ng-controller='home')
                 img.frame(src="/img/frame_avatar.png", ng-click="clickavatar='vis'")
                 .avatar
                     img(ng-src="{{user.avatar}}")
@@ -72,13 +74,86 @@ html(ng-app="home")
                         input.but(type='submit', value='Upload Image', name='submit')
                         button.but(type="button" ng-click="cancel()")
                             |Cancel
-            .addNews(ng-class="add")
+            .addNews(ng-class="add", ng-controller='home')
                 textarea(type="text", class="form-control", rows="5", placeholder="Input your text...", ng-model='mess')
                 button.btn.btn-default(ng-click="sendNews()")
                     | Submit
                 button.btn.btn-default(ng-click="add='hidd'")
                     |Cancel
-            .searchWindow.hidd(ng-class="Sch")
+
+            // friends page *******************************************************************************
+
+            .center(ng-if='activePage=="friends"', ng-style='friends', ng-controller='friend')
+                .center.topp
+                .friends
+                    .friend(ng-repeat="name in friends")
+                        .name
+                            |{{friends[$index].name}}
+                        br
+                        img.friendAvatar(ng-src="{{friends[$index].avatar}}")
+                        a(href="/user/{{friends[$index].name}}")
+                            button.openPage
+                                |Open page
+                        button.sendMessage(ng-click="sendmess(friends[$index].name)")
+                            |Send message
+                .center.bot
+
+            // chatrooms page *******************************************************************************
+
+            .center(ng-if='activePage=="chat"', ng-controller='chat')
+                .center.topp
+                .chats
+                    .chat
+                        .chatNames
+                            .chatName(ng-repeat="name in chatroom" ng-click="active(chatroom[$index].name)")
+                                |{{chatroom[$index].name}}
+                        .chatArea
+                            .message(ng-repeat="name in activechatroom.history")
+                                .name
+                                    |{{activechatroom.history[$index].name}}:
+                                    .time
+                                        |{{activechatroom.history[$index].time}}
+                                .text
+                                    |{{activechatroom.history[$index].text}}
+                        .chatInput
+                            input.mess(ng-model="chatMessage" ng-keypress="$event.keyCode == 13 && send()")
+                            button.s(ng-click="send()")
+                                |Send
+                .center.bot
+
+            // alboms page *******************************************************************************
+
+            .center(ng-if='activePage=="alboms"', ng-controller='alboms')
+                .center.topp
+                    button.added.up.none(ng-class="vissAlbom", ng-click="up()")
+                        |UP
+                    button.added(ng-click="_add()")
+                        |{{add}}
+                .alboms
+                    .albom(ng-class="vissAlboms",ng-click="albo(alboms[$index].name)", ng-repeat="name in alboms")
+                        .close.glyphicon.glyphicon-remove(ng-click="closeAlbom(alboms[$index].name)")
+                        .name
+                            |{{alboms[$index].name}}:
+                        img.folder(src="/img/folder.png")
+                    .albom.none(ng-class="vissAlbom", ng-repeat="name in albom")
+                        .close.glyphicon.glyphicon-remove(ng-click="closePicture(albom[$index].name)")
+                        img.folder(ng-src="{{albom[$index].picture}}" ng-click="fullSize(albom[$index].picture)")
+                .center.bot
+
+            // news page *******************************************************************************
+            .center(ng-if='activePage=="news"', ng-controller='news')
+                .center.topp
+                .lenta
+                    .block(ng-repeat="text in history" )
+                        .nick
+                            |{{history[$index].name}}:
+                        br
+                        .news
+                            |{{history[$index].text}}
+                        img.separator(src="/img/block_bot.png")
+                .center.bot
+
+            .searchWindow.hidd(ng-class="Sch", ng-controller='home')
                 .topText
                     |Input name for search
                 input.input(type="text" ng-model="search")
